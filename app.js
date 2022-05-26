@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const noteRouter = require('./routes/noteRoutes')
 const app = express();
 
 // Middleware

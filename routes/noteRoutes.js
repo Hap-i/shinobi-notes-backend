@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { getAllNotes, createNotes } = require('../controllers/noteController');
 
 const router = express.Router();
 
@@ -7,11 +8,11 @@ router
     .get(getAllNotes)
     .post(createNotes)
 
-router
-    .route('/:id')
-    .get(getNote)
-    .patch(updateNote)
-    .delete(deleteNote)
+// router
+//     .route('/:id')
+//     .get(getNote)
+//     .patch(updateNote)
+//     .delete(deleteNote)
 
 
 
