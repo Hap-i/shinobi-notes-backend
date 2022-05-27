@@ -9,6 +9,10 @@ const noteSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Description can\'t be empty']
     },
+    tagName: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tag'
+    },
     createdAt: {
         type: Date,
         default: Date.now
