@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const noteRouter = require('./routes/noteRoutes')
+const globalErrorHandler = require('./controllers/errorController');
+const AppError = require('./utils/appError');
 const app = express();
 
 // Middleware
@@ -15,11 +17,11 @@ app.use('/api/v1/notes', noteRouter);
 
 
 // Unhandled Routes 404
-// app.all('*', (req, res, next) => {
-// next(new AppError(`Invalid Path (${req.originalUrl})`, 404));
-// });
+app.all('*', (req, res, next) => {
+    next(new AppError(`Invalid Path (${req.originalUrl})`, 404));
+});
 
 // Global error handling Middleware
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 module.exports = app
