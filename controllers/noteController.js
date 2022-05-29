@@ -1,6 +1,7 @@
 const Note = require("../models/noteModel")
+const { catchAsync } = require("../utils/catchAsync")
 
-exports.getAllNotes = async (req, res, next) => {
+exports.getAllNotes = catchAsync(async (req, res, next) => {
     const notes = await Note.find({})
     res.status(200).json({
         status: "Success",
@@ -8,9 +9,9 @@ exports.getAllNotes = async (req, res, next) => {
             notes
         }
     })
-}
+});
 
-exports.createNotes = async (req, res, next) => {
+exports.createNotes = catchAsync(async (req, res, next) => {
 
     const note = await Note.create({
         title: req.body.title,
@@ -22,4 +23,4 @@ exports.createNotes = async (req, res, next) => {
             note
         }
     })
-}
+})
